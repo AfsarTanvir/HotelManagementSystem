@@ -28,8 +28,10 @@ namespace HotelManagementSytem.Controllers
             {
                 _db.Villas.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "The Villa has been Created successfully.";
                 return RedirectToAction("Index");
             }
+            TempData["error"] = "The Villa could not be Created.";
             return View("Index", "Villa");
         }
 
@@ -49,9 +51,11 @@ namespace HotelManagementSytem.Controllers
             if (ModelState.IsValid && obj.Id > 0)
             {
                 _db.Villas.Update(obj);
-                _db.SaveChanges();
+                _db.SaveChanges(); 
+                TempData["success"] = "The Villa has been Updated successfully.";
                 return RedirectToAction("Index");
             }
+            TempData["error"] = "The Villa could not be Updated.";
             return View();
         }
         public IActionResult Delete(int villaId)
@@ -73,8 +77,10 @@ namespace HotelManagementSytem.Controllers
             {
                 _db.Villas.Remove(objFromDb);
                 _db.SaveChanges();
+                TempData["success"] = "The Villa has been deleted successfully.";
                 return RedirectToAction("Index");
             }
+            TempData["error"] = "The Villa could not be deleted.";
             return View();
         }
     }
