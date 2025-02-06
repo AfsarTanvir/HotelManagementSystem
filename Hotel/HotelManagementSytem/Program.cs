@@ -17,7 +17,7 @@ namespace HotelManagementSytem
             builder.Services.AddDbContext<ApplicationDbContext>(option =>
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnect")));
 
-            builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
